@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>函数声明和变量声明</title>
+</head>
+<body>
+<script type="text/javascript">
+	// d定义一个对象，包含name,sex,age属性，其中name,age属性可读写，sex属性仅可读。
+	// let person = {
+	// 	name: 'Giovanni',
+	// 	age: '24',
+	// 	sex: 'male'
+	// };
+	// let proxy = new Proxy(person,{
+	// 	get(target,key){
+	// 		if(key == 'name'){
+	// 			throw '您无权查看我的姓名'
+	// 		}else{
+	// 			return target[key];
+	// 		}
+	// 	},
+	// 	set(target,key,value){
+	// 		if(key == 'sex'){
+	// 			throw 'sex属性不可写,请检查源代码'
+	// 		}else{
+	// 			target[key] = value;
+	// 		}
+	// 	}
+	// });
+	// let a = 1;
+	// let b = a;
+ 
+	// let she = person;
+	// person = Object.create(proxy)
+	// console.log(Object.is(a,b));
+
+	// 货币格式化函数
+	function CurrencyFormatter(amount){
+		let array = amount.split('.');
+		let numarr = [];
+		// 整数部分
+		let number = array[0].length % 3; 
+		numarr.push(array[0].substring(0,number));
+		for(let i = number; i<array[0].length; i+=3){
+			numarr.push(array[0].substring(i,i+3));
+		}
+		console.log(numarr);
+		// 根据数组长度判断该金额是否有小数
+		if(array.length == 1){
+			// 无小数部分
+			let float = '.00';
+			let rst = numarr.join(',') + float
+			console.log(rst);
+		}else{
+			// 有小数部分
+			array[1].substring(0,2);
+			let rst = numarr.join(',') + '.' +array[1].substring(0,2)
+			console.log(rst);
+		}
+	}
+	CurrencyFormatter('1234523423432678');
+</script>
+</body>
+</html>
